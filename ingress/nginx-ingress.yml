@@ -12,7 +12,6 @@ spec:
   - hosts:
     - delta.beta-82.win
     - fox.beta-82.win
-    - grafana.beta-82.win
     secretName: delta-tls-2
   - hosts:
     - beta.beta-82.win
@@ -54,7 +53,7 @@ spec:
           - pathType: Prefix
             backend:
               service:
-                name: grafana-service
+                name: grafana-proxy
                 port:
-                  number: 3000
+                  number: 80
             path: /
