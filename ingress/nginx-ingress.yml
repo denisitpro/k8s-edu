@@ -12,6 +12,7 @@ spec:
   - hosts:
     - delta.beta-82.win
     - fox.beta-82.win
+    - grafana.beta-82.win
     secretName: delta-tls-2
   - hosts:
     - beta.beta-82.win
@@ -46,4 +47,14 @@ spec:
                 name: service-python
                 port:
                   number: 8080
+            path: /
+    - host: grafana.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: grafana-service
+                port:
+                  number: 3000
             path: /
