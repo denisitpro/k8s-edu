@@ -16,6 +16,9 @@ spec:
   - hosts:
     - beta.beta-82.win
     secretName: beta-tls-2
+  - hosts:
+    - vault.beta-82.win
+    secretName: vault-tls-2
   rules:
     - host: alfa.beta-82.win
       http:
@@ -54,6 +57,16 @@ spec:
             backend:
               service:
                 name: grafana-proxy
+                port:
+                  number: 80
+            path: /
+    - host: vault.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: vault-proxy
                 port:
                   number: 80
             path: /
