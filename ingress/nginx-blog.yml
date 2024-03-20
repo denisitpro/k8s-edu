@@ -1,0 +1,68 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  namespace: nginx-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: alfa.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: service-python
+                port:
+                  number: 8080
+            path: /
+#    - host: beta.beta-82.win
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            backend:
+#              service:
+#                name: service-python
+#                port:
+#                  number: 8080
+#            path: /
+#    - host: delta.beta-82.win
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            backend:
+#              service:
+#                name: service-python
+#                port:
+#                  number: 8080
+#            path: /
+#    - host: fox.beta-82.win
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            backend:
+#              service:
+#                name: service-python
+#                port:
+#                  number: 8080
+#            path: /
+#    - host: grafana.beta-82.win
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            backend:
+#              service:
+#                name: grafana-proxy
+#                port:
+#                  number: 80
+#            path: /
+#    - host: vault.beta-82.win
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            backend:
+#              service:
+#                name: vault-proxy
+#                port:
+#                  number: 80
+#            path: /
