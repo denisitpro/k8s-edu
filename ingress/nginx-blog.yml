@@ -3,8 +3,15 @@ kind: Ingress
 metadata:
   name: ingress-nginx
   namespace: nginx-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - beta.beta-82.win
+    secretName: beta-tls-2
   rules:
     - host: alfa.beta-82.win
       http:
@@ -16,26 +23,26 @@ spec:
                 port:
                   number: 8080
             path: /
-#    - host: beta.beta-82.win
-#      http:
-#        paths:
-#          - pathType: Prefix
-#            backend:
-#              service:
-#                name: service-python
-#                port:
-#                  number: 8080
-#            path: /
-#    - host: delta.beta-82.win
-#      http:
-#        paths:
-#          - pathType: Prefix
-#            backend:
-#              service:
-#                name: service-python
-#                port:
-#                  number: 8080
-#            path: /
+    - host: beta.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: kube-ops-kube-ops-view
+                port:
+                  number: 80
+            path: /
+    - host: delta.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: service-python
+                port:
+                  number: 8080
+            path: /
 #    - host: fox.beta-82.win
 #      http:
 #        paths:
