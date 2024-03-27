@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  namespace: cert-manager
+  name: cloudflare-issuer-beta
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - dns01:
+        cloudflare:
+          email: devops-den@outlook.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-beta-82
+            key: api-token
