@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-app-proxy
+  namespace: nginx-ingress
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: go-app-proxy
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app-proxy
+  namespace: nginx-ingress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app-proxy
+  template:
+    metadata:
+      labels:
+        app: go-app-proxy
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources: {}
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: go-app-proxy-nginx-conf
