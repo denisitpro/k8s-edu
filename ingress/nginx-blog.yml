@@ -12,6 +12,10 @@ spec:
   - hosts:
     - beta.beta-82.win
     secretName: beta-tls-2
+  - hosts:
+    - delta.beta-82.win
+    - fox.beta-82.win
+    secretName: delta-dns-cloudflare
   rules:
     - host: alfa.beta-82.win
       http:
@@ -43,16 +47,16 @@ spec:
                 port:
                   number: 8080
             path: /
-#    - host: fox.beta-82.win
-#      http:
-#        paths:
-#          - pathType: Prefix
-#            backend:
-#              service:
-#                name: service-python
-#                port:
-#                  number: 8080
-#            path: /
+    - host: fox.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: service-python
+                port:
+                  number: 8080
+            path: /
 #    - host: grafana.beta-82.win
 #      http:
 #        paths:
