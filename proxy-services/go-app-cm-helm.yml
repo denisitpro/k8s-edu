@@ -8,6 +8,6 @@ data:
     server {
       listen 8080;
       location / {
-        proxy_pass http://go-app-svc.go-app.svc.cluster.local;
+        proxy_pass http://go-app.go-app.svc.cluster.local;
       }
     }
