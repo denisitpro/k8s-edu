@@ -6,7 +6,7 @@ metadata:
 data:
   default.conf: |  # Измените имя файла на default.conf
     server {
-      listen 8080;
+      listen 8082;
       location / {
         proxy_pass http://go-app.go-app.svc.cluster.local;
       }
