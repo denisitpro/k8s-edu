@@ -3,11 +3,14 @@ kind: Application
 metadata:
   name: go-app-argo-direct2
 spec:
-  destination:
-    namespace: go-app
-    server: https://kubernetes.default.svc
   project: default
   source:
     path: go-app-example
-    repoURL: https://github.com/denisitpro/k8s-edu.git
+    repoURL: https://github.com/denisitpro/k8s-edu
     targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: go-app
+  syncPolicy:
+    automated: {}
+
