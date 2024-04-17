@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-app-argo-direct2
+spec:
+  destination:
+    namespace: go-app
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: go-app-example
+    repoURL: https://github.com/denisitpro/k8s-edu.git
+    targetRevision: HEAD
