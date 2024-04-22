@@ -1,0 +1,13 @@
+---
+# todo remove - need for test network policy
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-redis
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: python-redis
+  type: ClusterIP

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy-1
+spec:
+  podSelector:
+    matchLabels:
+#      app: go-app-label
+      app.kubernetes.io/name: redis
+#      app: python-redis
+  policyTypes:    # <<<
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: python-pod
+    - namespaceSelector:
+        matchLabels:
+          policy: "200" # namespace python
+#  egress:         # <<<
+#  - to:
+#    ports:
+#    - protocol: UDP
+#      port: 53
+#    - protocol: TCP
+#      port: 443
