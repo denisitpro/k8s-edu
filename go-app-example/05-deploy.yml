@@ -5,7 +5,7 @@ metadata:
   name: go-app-deployment
   namespace: go-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: go-app-label
@@ -17,6 +17,9 @@ spec:
       containers:
       - image: denisitpro/go-example:latest
         name: go-app
+        env:
+          - name: AI_NAME
+            value: "Ivan"
         ports:
         - containerPort: 8082
         readinessProbe:
