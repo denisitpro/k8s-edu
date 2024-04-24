@@ -17,6 +17,9 @@ spec:
       containers:
       - image: denisitpro/go-example:latest
         name: go-app
+        env:
+          - name: AI_NAME
+            value: "Ivan"
         ports:
         - containerPort: 8082
         readinessProbe:
