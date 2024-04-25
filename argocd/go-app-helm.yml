@@ -13,9 +13,12 @@ spec:
       releaseName: go-app
       valueFiles:
         - values.yaml
-#        - values/dev.yaml
       valuesObject:
         aiName: "Bob"
+#        aiTarget:
+#          secretKeyRef:
+#            name: ai-secret
+#            key: aiTarget
   destination:
     server: "https://kubernetes.default.svc"
     namespace: go-app
