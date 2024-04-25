@@ -19,4 +19,5 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - w-01
+                - w-01.beta-82.win
+
