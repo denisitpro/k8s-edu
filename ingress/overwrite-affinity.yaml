@@ -1,0 +1,21 @@
+#https://github.com/kubernetes/ingress-nginx/blob/300f772dd75c9a8d6df7831c97cd5a503235e1dc/charts/ingress-nginx/values.yaml#L272
+controller:
+  affinity:
+   podAntiAffinity:
+     requiredDuringSchedulingIgnoredDuringExecution:
+     - labelSelector:
+         matchExpressions:
+         - key: app.kubernetes.io/name
+           operator: In
+           values:
+           - ingress-nginx
+         - key: app.kubernetes.io/instance
+           operator: In
+           values:
+           - ingress-nginx
+         - key: app.kubernetes.io/component
+           operator: In
+           values:
+           - controller
+       topologyKey: "kubernetes.io/hostname"
+
