@@ -20,13 +20,11 @@ spec:
         env:
           - name: AI_NAME
             value: "Ivan"
-#          - name: AI_TARGET # example secret usage k8s
-#            valueFrom:
-#              secretKeyRef:
-#                name: ai-target
-#                key: aiTarget
-#          - secretRef:
-#              name: vault-external-secret
+          - name: AI_TARGET # example secret usage k8s external store
+            valueFrom:
+              secretKeyRef:
+                name: hcp-vault-secrets
+                key: target1
         ports:
         - containerPort: 8082
         readinessProbe:
