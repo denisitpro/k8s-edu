@@ -8,17 +8,23 @@ spec:
   source:
     chart: go-app
     repoURL: https://denisitpro.github.io/helm-edu/
-    targetRevision: 0.1.2
+    targetRevision: 0.1.4
     helm:
       releaseName: go-app
       valueFiles:
         - values.yaml
-      valuesObject:
-        aiName: "Bob"
-#        aiTarget:
-#          secretKeyRef:
-#            name: ai-secret
-#            key: aiTarget
+      valuesObject: # option 1 overwrite
+        aiName: "Erika"
+#        secrets:
+#          aiTarget:
+#            secretName: hcp-vault-secrets
+#            secretKey: target2
+#      values: |  # option 2 overwrite
+#        aiName: "Bob"
+#        secrets:
+#          aiTarget:
+#            secretName: hcp-vault-secrets
+#            secretKey: target2
   destination:
     server: "https://kubernetes.default.svc"
     namespace: go-app
