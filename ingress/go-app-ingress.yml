@@ -1,13 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-nginx
+  name: ingress-go-app
   namespace: go-app
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    spec.ingressClassName: "traefik"
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
-  ingressClassName: nginx
   tls:
   - hosts:
     - fox.beta-82.win
