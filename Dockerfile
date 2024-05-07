@@ -11,3 +11,4 @@ COPY --from=sources /opt/app/go-example-apps/main /opt/app/go-app
 
 EXPOSE 8082
 CMD ["./go-app"]
+
