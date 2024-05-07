@@ -9,14 +9,13 @@ spec:
     args:
       - "--context=dir:///workspace"
       - "--dockerfile=/workspace/Dockerfile"
-      - "--destination=denisitpro/go-example:kaniko-go"
-#      - "--cleanup"
+      - "--destination=denisitpro/go-example:kaniko-go3"
     volumeMounts:
       - name: kaniko-local-pv-mount
         mountPath: /workspace
       - name: kaniko-secret
         mountPath: /kaniko/.docker
-      - name: dockerfile-config
+      - name: dockerfile-cm
         mountPath: /workspace/Dockerfile
         subPath: Dockerfile
   restartPolicy: Never
@@ -27,6 +26,6 @@ spec:
     - name: kaniko-secret
       secret:
         secretName: kaniko-secret
-    - name: dockerfile-config
+    - name: dockerfile-cm
       configMap:
-        name: dockerfile-config
+        name: dockerfile-cm
