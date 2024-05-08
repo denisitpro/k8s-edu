@@ -9,7 +9,7 @@ spec:
     args:
       - "--context=dir:///workspace"
       - "--dockerfile=/workspace/Dockerfile"
-      - "--destination=denisitpro/go-example:kaniko-go3"
+      - "--destination=denisitpro/go-example:kaniko-go-example"
     volumeMounts:
       - name: kaniko-local-pv-mount
         mountPath: /workspace
