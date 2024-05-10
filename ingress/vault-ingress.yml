@@ -4,8 +4,8 @@ metadata:
   name: ingress-vault
   namespace: vault
   annotations:
-    spec.ingressClassName: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    spec.ingressClassName: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
   - hosts:
