@@ -4,7 +4,9 @@ metadata:
   name: go-app-argo-helm
   namespace: argocd
   annotations:
-    argocd-imageUpdaters: '[{"kind": "ImageTag", "registry": "docker.io", "image": "denisitpro/go-example", "tag": "latest"}]'
+    argocd-image-updater.argoproj.io/image-list: goapp=denisitpro/go-example:latest
+    argocd-image-updater.argoproj.io/goapp.update-strategy: digest
+    argocd-image-updater.argoproj.io/goapp.force-update: "true"
 spec:
   project: default
   source:
@@ -30,18 +32,9 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: go-app
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-#  syncPolicy:
-#    automated: {}
-## enabled sync policy docker tag
 #  syncPolicy:
 #    automated:
 #      prune: true
 #      selfHeal: true
-#      autoSyncImageTagger:
-#        containerImages:
-#          - image: denisitpro/go-example
-#            tag: latest
+  syncPolicy:
+    automated: {}
