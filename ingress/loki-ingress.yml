@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-loki
+  namespace: loki
+  annotations:
+    spec.ingressClassName: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - loki.beta-82.win
+    secretName: loki-certs-ecdsa
+  rules:
+    - host: loki.beta-82.win
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: loki
+                port:
+                  number: 3100
+            path: /

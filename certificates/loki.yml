@@ -2,10 +2,9 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: alphabet-certs-ecdsa
-#  namespace: go-app
+  name: loki-certs-ecdsa
 spec:
-  secretName: alphabet-certs-ecdsa
+  secretName: loki-certs-ecdsa
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -13,6 +12,4 @@ spec:
     algorithm: ECDSA
     size: 256
   dnsNames:
-    - alfa.beta-82.win
-    - beta.beta-82.win
-    - fox.beta-82.win
+    - loki.beta-82.win
