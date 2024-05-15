@@ -2,10 +2,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: alphabet-certs-ecdsa
+  name: grafana-certs-ecdsa
 #  namespace: go-app
 spec:
-  secretName: alphabet-certs-ecdsa
+  secretName: grafana-certs-ecdsa
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -13,6 +13,4 @@ spec:
     algorithm: ECDSA
     size: 256
   dnsNames:
-    - alfa.beta-82.win
-    - beta.beta-82.win
-    - fox.beta-82.win
+    - grafana.beta-82.win
