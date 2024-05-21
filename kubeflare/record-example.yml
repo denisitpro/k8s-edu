@@ -4,12 +4,17 @@ metadata:
   name: 43.beta-82.win
 spec:
   zone: beta-82.win
-  record:
-    type: "A"
-    name: "43"
-    content: "1.1.1.1"
-    proxied: false
-    ttl: 300
+  records:
+    - type: "A"
+      name: "43"
+      content: "1.1.1.1"
+      proxied: false
+      ttl: 300
+    - type: "A"
+      name: "44"
+      content: "1.1.1.1"
+      proxied: false
+      ttl: 300
 ---
 apiVersion: crds.kubeflare.io/v1alpha1
 kind: DNSRecord
