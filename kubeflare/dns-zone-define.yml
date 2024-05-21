@@ -1,0 +1,13 @@
+apiVersion: crds.kubeflare.io/v1alpha1
+kind: Zone
+metadata:
+  name: beta-82.win
+spec:
+  apiToken: beta82-token
+  settings:
+    alwaysUseHttps: true
+    alwaysOnline: true
+    minify:
+      css: true
+
+
