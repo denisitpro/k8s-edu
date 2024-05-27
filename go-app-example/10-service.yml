@@ -5,6 +5,7 @@ metadata:
   name: go-app
 #  namespace: go-app
 spec:
+  ipFamilyPolicy: PreferDualStack
   ports:
   - port: 80
     targetPort: 8082
