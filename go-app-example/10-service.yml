@@ -5,9 +5,12 @@ metadata:
   name: go-app
 #  namespace: go-app
 spec:
-  ipFamilyPolicy: PreferDualStack
+#  ipFamilyPolicy: PreferDualStack
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv6
   ports:
-  - port: 80
+  - port: 8082
     targetPort: 8082
   selector:
     app: go-app-label
