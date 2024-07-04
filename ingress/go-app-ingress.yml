@@ -6,9 +6,9 @@ metadata:
   name: ingress-go-app
   namespace: go-app
   annotations:
-    spec.ingressClassName: "traefik"
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: "nginx" # https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/
   tls:
   - hosts:
     - fox.beta-82.win
@@ -22,5 +22,5 @@ spec:
               service:
                 name: go-app
                 port:
-                  number: 80
+                  number: 8082
             path: /
