@@ -1,5 +1,15 @@
-#https://github.com/kubernetes/ingress-nginx/blob/300f772dd75c9a8d6df7831c97cd5a503235e1dc/charts/ingress-nginx/values.yaml#L272
 controller:
+  replicaCount: 2
+  internal:
+    ipFamilyPolicy: PreferDualStack #suport ipv6
+  service:
+    type: LoadBalancer
+    externalIPs:
+      - 142.132.245.44
+    nodePorts:
+      http: 30080
+      https: 30443
+#https://github.com/kubernetes/ingress-nginx/blob/300f772dd75c9a8d6df7831c97cd5a503235e1dc/charts/ingress-nginx/values.yaml#L272
   affinity:
    podAntiAffinity:
      requiredDuringSchedulingIgnoredDuringExecution:
