@@ -1,11 +1,11 @@
 controller:
   replicaCount: 2
-  internal:
-    ipFamilyPolicy: PreferDualStack #suport ipv6
   service:
     type: LoadBalancer
+#    ipFamilyPolicy: PreferDualStack #support ipv6 - need public ipv6 address
     externalIPs:
       - 142.132.245.44
+# not work for hetznder load balancer
     nodePorts:
       http: 30080
       https: 30443

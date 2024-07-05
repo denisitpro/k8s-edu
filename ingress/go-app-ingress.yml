@@ -5,14 +5,14 @@ kind: Ingress
 metadata:
   name: ingress-go-app
   namespace: go-app
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+#  annotations:
+#    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: "nginx" # https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/
-  tls:
-  - hosts:
-    - fox.beta-82.win
-    secretName: fox-cert # todo remove new name alphabet-certs-ecdsa
+#  tls:
+#  - hosts:
+#    - fox.beta-82.win
+#    secretName: fox-cert # todo remove new name alphabet-certs-ecdsa
   rules:
     - host: fox.beta-82.win
       http:
