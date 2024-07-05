@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: ingress-vault
   namespace: vault
-  annotations:
-    spec.ingressClassName: "traefik"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+#  annotations:
+#    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  tls:
-  - hosts:
-    - vault.beta-82.win
-    secretName: vault-tls
+  ingressClassName: "nginx"
+#  tls:
+#  - hosts:
+#    - vault.beta-82.win
+#    secretName: vault-tls
   rules:
     - host: vault.beta-82.win
       http:

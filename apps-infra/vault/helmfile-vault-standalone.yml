@@ -1,0 +1,40 @@
+repositories:
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
+
+
+# set local storage class
+releases:
+  - name: vault
+    namespace: vault
+    chart: hashicorp/vault
+    version: 0.28.0
+    values:
+      - server:
+          ha:
+            enabled: false
+          dataStorage:
+            enabled: true
+            storageClass: "local-path"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+      - ui:
+          enabled: true
+#      - injector:
+#          enabled: true
+# Optional: Environments
+#environments:
+#  dev:
+#    values:
+#      - environments/dev.yaml
+#  staging:
+#    values:
+#      - environments/staging.yaml
+#  prod:
+#    values:
+#      - environments/prod.yaml

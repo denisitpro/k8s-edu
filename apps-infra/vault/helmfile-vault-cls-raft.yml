@@ -1,0 +1,41 @@
+repositories:
+  - name: hashicorp
+    url: https://helm.releases.hashicorp.com
+
+releases:
+  - name: vault
+    namespace: vault
+    chart: hashicorp/vault
+    version: 0.28.0
+    values:
+      - server:
+          ha:
+            enabled: true
+            replicas: 3
+            raft:
+              enabled: true
+              setNodeId: true
+              config: |
+                ui = true
+                listener "tcp" {
+                   tls_disable = 1
+                   address = "0.0.0.0:8200"
+                   cluster_address = "0.0.0.0:8201"
+                }
+                storage "raft" {
+                   path = "/vault/data"
+                }
+                service_registration "kubernetes" {}
+                disable_mlock = true
+          dataStorage:
+            enabled: true
+            storageClass: "local-path"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+      - ui:
+          enabled: true
