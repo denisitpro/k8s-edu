@@ -1,0 +1,52 @@
+repositories:
+  - name: hcloud
+    url: https://charts.hetzner.cloud
+
+
+# set local storage class
+releases:
+  - name: hcloud-csi
+    namespace: kube-system
+    chart: hcloud/hcloud-csi
+    version: v2.7.1
+    values:
+      - storageClasses:
+          - name: hcloud-volumes
+            reclaimPolicy: Delete
+            allowVolumeExpansion: true
+            volumeBindingMode: WaitForFirstConsumer
+            mountOptions:
+              - discard
+            parameters:
+              type: "ssd"
+      - controller:
+          nodeSelector:
+            node-role.kubernetes.io/control-plane: "false"
+      - node:
+          nodeSelector:
+            node-role.kubernetes.io/control-plane: "false"
+## another variant
+#      - controller:
+#          tolerations:
+#            - key: "CriticalAddonsOnly"
+#              operator: "Exists"
+#            - key: "node.kubernetes.io/not-ready"
+#              operator: "Exists"
+#              effect: "NoExecute"
+#            - key: "node-role.kubernetes.io/control-plane"
+#              operator: "Exists"
+#              effect: "NoSchedule"
+#          nodeSelector:
+#            node-role.kubernetes.io/control-plane: "false"
+#      - node:
+#          tolerations:
+#            - key: "CriticalAddonsOnly"
+#              operator: "Exists"
+#            - key: "node.kubernetes.io/not-ready"
+#              operator: "Exists"
+#              effect: "NoExecute"
+#            - key: "node-role.kubernetes.io/control-plane"
+#              operator: "Exists"
+#              effect: "NoSchedule"
+#          nodeSelector:
+#            node-role.kubernetes.io/control-plane: "false"

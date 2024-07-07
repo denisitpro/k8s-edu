@@ -15,7 +15,7 @@ releases:
             enabled: false
           dataStorage:
             enabled: true
-            storageClass: "local-path"
+            storageClass: "hcloud-volumes"
           resources:
             requests:
               cpu: "100m"
