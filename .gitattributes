@@ -1,0 +1,1 @@
+csi/hetzner/secret.yml filter=git-crypt diff=git-crypt
