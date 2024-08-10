@@ -8,7 +8,7 @@ releases:
   - name: hcloud-csi
     namespace: kube-system
     chart: hcloud/hcloud-csi
-    version: v2.7.1
+    version: v2.9.0
     values:
       - storageClasses:
           - name: hcloud-volumes
