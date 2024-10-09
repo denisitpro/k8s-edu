@@ -2,7 +2,6 @@ repositories:
   - name: hcloud
     url: https://charts.hetzner.cloud
 
-
 # set local storage class
 releases:
   - name: hcloud-csi
@@ -20,11 +19,15 @@ releases:
             parameters:
               type: "ssd"
       - controller:
-          nodeSelector:
-            node-role.kubernetes.io/control-plane: "false"
+          tolerations:
+            - key: "node-role.kubernetes.io/control-plane"
+              operator: "Exists"
+              effect: "NoSchedule"
       - node:
-          nodeSelector:
-            node-role.kubernetes.io/control-plane: "false"
+          tolerations:
+            - key: "node-role.kubernetes.io/control-plane"
+              operator: "Exists"
+              effect: "NoSchedule"
 ## another variant
 #      - controller:
 #          tolerations:
