@@ -8,4 +8,5 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 # example LB not created
 helm install nginx-ingress ingress-nginx/ingress-nginx \
   --namespace nginx-ingress \
-  --set controller.replicaCount=2 
+  --create-namespace \
+  --set controller.replicaCount=2
