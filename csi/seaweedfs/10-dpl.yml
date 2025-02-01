@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app
+#  namespace: go-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app-label
+  template:
+    metadata:
+      labels:
+        app: go-app-label
+    spec:
+      containers:
+      - image: denisitpro/go-example:latest
+        name: go-app
+        env:
+          - name: AI_NAME
+            value: "Ivan"
+        ports:
+        - containerPort: 8082
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 300m
+            memory: 512Mi
+      #   volumeMounts:
+      #   - name: seaweedfs-volume
+      #     mountPath: /data
+      # volumes:
+      # - name: seaweedfs-volume
+      #   persistentVolumeClaim:
+      #     claimName: seaweedfs-pvc
