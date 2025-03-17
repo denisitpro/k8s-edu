@@ -25,6 +25,8 @@ spec:
       labels:
         app: go-app-label
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: w-04
       containers:
       - image: denisitpro/go-example:latest
         name: go-app

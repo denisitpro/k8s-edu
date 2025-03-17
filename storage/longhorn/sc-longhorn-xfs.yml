@@ -8,7 +8,7 @@ metadata:
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: Delete
-volumeBindingMode: Immediate
+volumeBindingMode: WaitForFirstConsumer
 parameters:
   numberOfReplicas: "3"
   staleReplicaTimeout: "30"
@@ -18,3 +18,8 @@ parameters:
   unmapMarkSnapChainRemoved: "ignored"
   disableRevisionCounter: "true"
   dataEngine: "v1"
+# allowedTopologies:
+#   - matchLabelExpressions:
+#       - key: storage
+#         values:
+#           - longhorn  
